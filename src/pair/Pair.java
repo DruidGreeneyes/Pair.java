@@ -12,6 +12,14 @@ public class Pair<A, B> {
 
     public final B right;
 
+    public final A left() {
+        return left;
+    }
+
+    public final B right() {
+        return right;
+    }
+
     protected Pair(final A a, final B b) {
         left = a;
         right = b;
