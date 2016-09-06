@@ -5,6 +5,10 @@ Because Map.Entry is !@#$ stupid.
 
 -----
 
+Get it from jitpack.io: [https://jitpack.io/#druidgreeneyes/pair.java](https://jitpack.io/#druidgreeneyes/pair.java)
+
+
+
 Immutable Pairs for java, with some functional goodies along with. For example: most instance methods that take arguments are also available in Function form under Pair.F.methodName.
 
 ```java
