@@ -39,7 +39,7 @@ public class Things {
 
     //"Works!"
     
-    Pair.into(Things::doThings).apply(p);
+    Pair.F.into(Things::doThings).apply(p);
     
     //"Works!"
 }
