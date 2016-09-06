@@ -61,5 +61,10 @@ public class Pair<A, B> {
                 final Function<B, R> fun) {
             return pair -> pair.mapRight(fun);
         }
+
+        public static final <A, B, R> Function<Pair<A, B>, R> into(
+                BiFunction<A, B, R> fun) {
+            return pair -> pair.into(fun);
+        }
     }
 }
