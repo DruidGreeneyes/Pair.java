@@ -1,6 +1,8 @@
 package pair;
 
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class Pair<A, B> {
@@ -20,6 +22,10 @@ public class Pair<A, B> {
         return right;
     }
 
+    public final Pair<B, A> invert() {
+        return Pair.make(right, left);
+    }
+
     protected Pair(final A a, final B b) {
         left = a;
         right = b;
@@ -29,8 +35,16 @@ public class Pair<A, B> {
         return fun.apply(left, right);
     }
 
+    public void into(final BiConsumer<A, B> fun) {
+        fun.accept(left, right);
+    }
+
     public <R> R into(final Function<Pair<A, B>, R> fun) {
         return fun.apply(this);
+    }
+
+    public void into(final Consumer<Pair<A, B>> fun) {
+        fun.accept(this);
     }
 
     public <R> Pair<R, B> mapLeft(final Function<A, R> fun) {
@@ -63,7 +77,12 @@ public class Pair<A, B> {
         }
 
         public static final <A, B, R> Function<Pair<A, B>, R> into(
-                BiFunction<A, B, R> fun) {
+                final BiFunction<A, B, R> fun) {
+            return pair -> pair.into(fun);
+        }
+
+        public static final <A, B> Consumer<Pair<A, B>> into(
+                final BiConsumer<A, B> fun) {
             return pair -> pair.into(fun);
         }
     }
