@@ -30,19 +30,19 @@ public class UniformPair<T> {
         right = b;
     }
 
-    public <R> R into(final BiFunction<T, T, R> fun) {
+    public <R> R intoFun(final BiFunction<T, T, R> fun) {
         return fun.apply(left, right);
     }
 
-    public void into(final BiConsumer<T, T> fun) {
+    public void intoCon(final BiConsumer<T, T> fun) {
         fun.accept(left, right);
     }
 
-    public <R> R into(final Function<UniformPair<T>, R> fun) {
+    public <R> R intoFun(final Function<UniformPair<T>, R> fun) {
         return fun.apply(this);
     }
 
-    public void into(final Consumer<UniformPair<T>> fun) {
+    public void intoCon(final Consumer<UniformPair<T>> fun) {
         fun.accept(this);
     }
 
@@ -90,7 +90,7 @@ public class UniformPair<T> {
 
         public static final <T, R> Function<UniformPair<T>, R> into(
                 final BiFunction<T, T, R> fun) {
-            return pair -> pair.into(fun);
+            return pair -> pair.intoFun(fun);
         }
 
         public static final <T> ToDoubleFunction<UniformPair<T>> intoDouble(
@@ -100,7 +100,7 @@ public class UniformPair<T> {
 
         public static final <T> Consumer<UniformPair<T>> into(
                 final BiConsumer<T, T> fun) {
-            return pair -> pair.into(fun);
+            return pair -> pair.intoCon(fun);
         }
     }
 

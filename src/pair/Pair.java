@@ -40,19 +40,19 @@ public class Pair<A, B> {
         right = b;
     }
 
-    public <R> R into(final BiFunction<A, B, R> fun) {
+    public <R> R intoFun(final BiFunction<A, B, R> fun) {
         return fun.apply(left, right);
     }
 
-    public void into(final BiConsumer<A, B> fun) {
+    public void intoCon(final BiConsumer<A, B> fun) {
         fun.accept(left, right);
     }
 
-    public <R> R into(final Function<Pair<A, B>, R> fun) {
+    public <R> R intoFun(final Function<Pair<A, B>, R> fun) {
         return fun.apply(this);
     }
 
-    public void into(final Consumer<Pair<A, B>> fun) {
+    public void intoCon(final Consumer<Pair<A, B>> fun) {
         fun.accept(this);
     }
 
@@ -60,40 +60,36 @@ public class Pair<A, B> {
         return fun.applyAsDouble(this);
     }
     
-    public double into(final ToDoubleBiFunction<A, B> fun) {
+    public double intoDouble(final ToDoubleBiFunction<A, B> fun) {
         return fun.applyAsDouble(left, right);
     }
     
-    public int into(final ToIntFunction<Pair<A, B>> fun) {
+    public int intoInt(final ToIntFunction<Pair<A, B>> fun) {
         return fun.applyAsInt(this);
     }
     
-    public int into(final ToIntBiFunction<A, B> fun) {
+    public int intoInt(final ToIntBiFunction<A, B> fun) {
         return fun.applyAsInt(left, right);
     }
     
-    public long into(final ToLongFunction<Pair<A, B>> fun) {
+    public long intoLong(final ToLongFunction<Pair<A, B>> fun) {
         return fun.applyAsLong(this);
     }
     
-    public long into(final ToLongBiFunction<A, B> fun) {
+    public long intoLong(final ToLongBiFunction<A, B> fun) {
         return fun.applyAsLong(left, right);
     }
     
-    public Pair<A, B> into(final UnaryOperator<Pair<A, B>> fun) {
+    public Pair<A, B> intoPair(final UnaryOperator<Pair<A, B>> fun) {
         return fun.apply(this);
     }
     
-    public boolean into(final Predicate<Pair<A, B>> fun) {
+    public boolean intoPred(final Predicate<Pair<A, B>> fun) {
         return fun.test(this);
     }
     
-    public boolean into(final BiPredicate<A, B> fun) {
+    public boolean intoPred(final BiPredicate<A, B> fun) {
         return fun.test(left, right);
-    }
-
-    public double intoDouble(final ToDoubleBiFunction<A, B> fun) {
-        return fun.applyAsDouble(left, right);
     }
 
     public <R> Pair<R, B> mapLeft(final Function<A, R> fun) {
@@ -127,7 +123,7 @@ public class Pair<A, B> {
 
         public static final <A, B, R> Function<Pair<A, B>, R> into(
                 final BiFunction<A, B, R> fun) {
-            return pair -> pair.into(fun);
+            return pair -> pair.intoFun(fun);
         }
 
         public static final <A, B> ToDoubleFunction<Pair<A, B>> intoDouble(
@@ -137,7 +133,7 @@ public class Pair<A, B> {
 
         public static final <A, B> Consumer<Pair<A, B>> into(
                 final BiConsumer<A, B> fun) {
-            return pair -> pair.into(fun);
+            return pair -> pair.intoCon(fun);
         }
     }
 }
