@@ -148,6 +148,11 @@ public class Pair<A, B> {
             return pair -> pair.intoFun(fun);
         }
 
+        public static final <A, B> UnaryOperator<Pair<A, B>> into(
+                final UnaryOperator<Pair<A, B>> fun) {
+            return pair -> pair.intoFun(fun);
+        }
+
         public static final <A, B> ToDoubleFunction<Pair<A, B>> intoDouble(
                 final ToDoubleFunction<Pair<A, B>> fun) {
             return pair -> pair.intoDouble(fun);
