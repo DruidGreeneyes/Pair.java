@@ -104,6 +104,14 @@ public class Pair<A, B> {
         return Pair.make(left, fun.apply(right));
     }
 
+    public <R> Pair<R, B> replaceLeft(final R neoLiberal) {
+        return Pair.make(neoLiberal, right);
+    }
+
+    public <R> Pair<A, R> replaceRight(final R altRight) {
+        return Pair.make(left, altRight);
+    }
+
     public static final class F {
         public static final <A, B> Function<A, Pair<A, B>> partialRight(
                 final B right) {
