@@ -104,11 +104,19 @@ public class Pair<A, B> {
         return Pair.make(left, fun.apply(right));
     }
 
-    public <R> Pair<R, B> replaceLeft(final R neoLiberal) {
+    public <R> Pair<R, B> mapLeft(final R neoLiberal) {
         return Pair.make(neoLiberal, right);
     }
 
-    public <R> Pair<A, R> replaceRight(final R altRight) {
+    public Pair<A, B> replaceLeft(final A neoLiberal) {
+        return Pair.make(neoLiberal, right);
+    }
+
+    public <R> Pair<A, R> mapRight(final R altRight) {
+        return Pair.make(left, altRight);
+    }
+
+    public Pair<A, B> replaceRight(final B altRight) {
         return Pair.make(left, altRight);
     }
 
@@ -133,13 +141,24 @@ public class Pair<A, B> {
             return pair -> pair.mapRight(fun);
         }
 
-        public static final <A, B, R> Function<Pair<A, B>, Pair<R, B>> replaceLeft(
+        public static final <A, B, R> Function<Pair<A, B>, Pair<R, B>> mapLeft(
                 final R neoLiberal) {
+            return pair -> pair.mapLeft(neoLiberal);
+        }
+
+
+        public static final <A, B, R> Function<Pair<A, B>, Pair<A, R>> mapRight(
+                final R altRight) {
+            return pair -> pair.mapRight(altRight);
+        }
+
+        public static final <A, B> UnaryOperator<Pair<A, B>> replaceLeft(
+                A neoLiberal) {
             return pair -> pair.replaceLeft(neoLiberal);
         }
 
-        public static final <A, B, R> Function<Pair<A, B>, Pair<A, R>> replaceRight(
-                final R altRight) {
+        public static final <A, B> UnaryOperator<Pair<A, B>> replaceRight(
+                B altRight) {
             return pair -> pair.replaceRight(altRight);
         }
 
