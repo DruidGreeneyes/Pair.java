@@ -4,6 +4,7 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.ToDoubleBiFunction;
 import java.util.function.ToDoubleFunction;
 
 public class Pair<A, B> {
@@ -48,8 +49,12 @@ public class Pair<A, B> {
         fun.accept(this);
     }
 
-    public double into(final ToDoubleFunction<Pair<A, B>> fun) {
+    public double intoDouble(final ToDoubleFunction<Pair<A, B>> fun) {
         return fun.applyAsDouble(this);
+    }
+
+    public double intoDouble(final ToDoubleBiFunction<A, B> fun) {
+        return fun.applyAsDouble(left, right);
     }
 
     public <R> Pair<R, B> mapLeft(final Function<A, R> fun) {
@@ -86,9 +91,9 @@ public class Pair<A, B> {
             return pair -> pair.into(fun);
         }
 
-        public static final <A, B> ToDoubleFunction<Pair<A, B>> into(
+        public static final <A, B> ToDoubleFunction<Pair<A, B>> intoDouble(
                 final ToDoubleFunction<Pair<A, B>> fun) {
-            return pair -> pair.into(fun);
+            return pair -> pair.intoDouble(fun);
         }
 
         public static final <A, B> Consumer<Pair<A, B>> into(
