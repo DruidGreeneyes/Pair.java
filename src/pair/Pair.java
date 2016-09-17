@@ -133,6 +133,16 @@ public class Pair<A, B> {
             return pair -> pair.mapRight(fun);
         }
 
+        public static final <A, B, R> Function<Pair<A, B>, Pair<R, B>> replaceLeft(
+                final R neoLiberal) {
+            return pair -> pair.replaceLeft(neoLiberal);
+        }
+
+        public static final <A, B, R> Function<Pair<A, B>, Pair<A, R>> replaceRight(
+                final R altRight) {
+            return pair -> pair.replaceRight(altRight);
+        }
+
         public static final <A, B, R> Function<Pair<A, B>, R> into(
                 final BiFunction<A, B, R> fun) {
             return pair -> pair.intoFun(fun);
