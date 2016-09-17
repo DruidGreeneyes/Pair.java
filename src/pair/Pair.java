@@ -2,10 +2,17 @@ package pair;
 
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.ToDoubleBiFunction;
 import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntBiFunction;
+import java.util.function.ToIntFunction;
+import java.util.function.ToLongBiFunction;
+import java.util.function.ToLongFunction;
+import java.util.function.UnaryOperator;
 
 public class Pair<A, B> {
     public static <A, B> Pair<A, B> make(final A left, final B right) {
@@ -51,6 +58,38 @@ public class Pair<A, B> {
 
     public double intoDouble(final ToDoubleFunction<Pair<A, B>> fun) {
         return fun.applyAsDouble(this);
+    }
+    
+    public double into(final ToDoubleBiFunction<A, B> fun) {
+        return fun.applyAsDouble(left, right);
+    }
+    
+    public int into(final ToIntFunction<Pair<A, B>> fun) {
+        return fun.applyAsInt(this);
+    }
+    
+    public int into(final ToIntBiFunction<A, B> fun) {
+        return fun.applyAsInt(left, right);
+    }
+    
+    public long into(final ToLongFunction<Pair<A, B>> fun) {
+        return fun.applyAsLong(this);
+    }
+    
+    public long into(final ToLongBiFunction<A, B> fun) {
+        return fun.applyAsLong(left, right);
+    }
+    
+    public Pair<A, B> into(final UnaryOperator<Pair<A, B>> fun) {
+        return fun.apply(this);
+    }
+    
+    public boolean into(final Predicate<Pair<A, B>> fun) {
+        return fun.test(this);
+    }
+    
+    public boolean into(final BiPredicate<A, B> fun) {
+        return fun.test(left, right);
     }
 
     public double intoDouble(final ToDoubleBiFunction<A, B> fun) {
