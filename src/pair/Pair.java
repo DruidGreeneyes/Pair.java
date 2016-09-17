@@ -19,6 +19,10 @@ public class Pair<A, B> {
         return new Pair<>(left, right);
     }
 
+    public static <A> Pair<A, A> of(final A item) {
+        return make(item, item);
+    }
+
     public final A left;
 
     public final B right;

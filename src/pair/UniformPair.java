@@ -88,7 +88,7 @@ public class UniformPair<T> {
             return pair -> pair.map(fun);
         }
 
-        public static final <T, R> Function<UniformPair<T>, R> into(
+        public static final <T, R> Function<UniformPair<T>, R> intoFun(
                 final BiFunction<T, T, R> fun) {
             return pair -> pair.intoFun(fun);
         }
@@ -103,7 +103,7 @@ public class UniformPair<T> {
             return pair -> pair.intoDouble(fun);
         }
 
-        public static final <T> Consumer<UniformPair<T>> into(
+        public static final <T> Consumer<UniformPair<T>> intoFun(
                 final BiConsumer<T, T> fun) {
             return pair -> pair.intoCon(fun);
         }
@@ -115,5 +115,9 @@ public class UniformPair<T> {
 
     public static <T> UniformPair<T> make(T a, T b) {
         return new UniformPair<T>(a, b);
+    }
+
+    public static <T> UniformPair<T> of(T a) {
+        return make(a, a);
     }
 }
