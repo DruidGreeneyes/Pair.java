@@ -98,6 +98,11 @@ public class UniformPair<T> {
             return pair -> pair.intoDouble(fun);
         }
 
+        public static final <T> ToDoubleFunction<UniformPair<T>> intoDouble(
+                final ToDoubleBiFunction<T, T> fun) {
+            return pair -> pair.intoDouble(fun);
+        }
+
         public static final <T> Consumer<UniformPair<T>> into(
                 final BiConsumer<T, T> fun) {
             return pair -> pair.intoCon(fun);

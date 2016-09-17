@@ -130,6 +130,11 @@ public class Pair<A, B> {
                 final ToDoubleFunction<Pair<A, B>> fun) {
             return pair -> pair.intoDouble(fun);
         }
+        
+        public static final <A, B> ToDoubleFunction<Pair<A, B>> intoDouble(
+                final ToDoubleBiFunction<A, B> fun) {
+            return pair -> pair.intoDouble(fun);
+        }
 
         public static final <A, B> Consumer<Pair<A, B>> into(
                 final BiConsumer<A, B> fun) {
