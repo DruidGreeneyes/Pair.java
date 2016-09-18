@@ -186,5 +186,10 @@ public class Pair<A, B> {
                 final BiConsumer<A, B> fun) {
             return pair -> pair.intoCon(fun);
         }
+
+        public static final <A, B> Predicate<Pair<A, B>> intoPred(
+                final BiPredicate<A, B> pred) {
+            return pair -> pair.intoPred(pred);
+        }
     }
 }
