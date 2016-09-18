@@ -162,12 +162,12 @@ public class Pair<A, B> {
             return pair -> pair.replaceRight(altRight);
         }
 
-        public static final <A, B, R> Function<Pair<A, B>, R> into(
+        public static final <A, B, R> Function<Pair<A, B>, R> intoFun(
                 final BiFunction<A, B, R> fun) {
             return pair -> pair.intoFun(fun);
         }
 
-        public static final <A, B> UnaryOperator<Pair<A, B>> into(
+        public static final <A, B> UnaryOperator<Pair<A, B>> intoPair(
                 final UnaryOperator<Pair<A, B>> fun) {
             return pair -> pair.intoFun(fun);
         }
@@ -182,7 +182,7 @@ public class Pair<A, B> {
             return pair -> pair.intoDouble(fun);
         }
 
-        public static final <A, B> Consumer<Pair<A, B>> into(
+        public static final <A, B> Consumer<Pair<A, B>> intoCon(
                 final BiConsumer<A, B> fun) {
             return pair -> pair.intoCon(fun);
         }
