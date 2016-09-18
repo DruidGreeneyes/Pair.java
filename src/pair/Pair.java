@@ -1,5 +1,6 @@
 package pair;
 
+import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
@@ -21,6 +22,10 @@ public class Pair<A, B> {
 
     public static <A> Pair<A, A> of(final A item) {
         return make(item, item);
+    }
+
+    public static <A, B> Pair<A, B> fromEntry(Map.Entry<A, B> entry) {
+        return make(entry.getKey(), entry.getValue());
     }
 
     public final A left;
