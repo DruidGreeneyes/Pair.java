@@ -97,6 +97,14 @@ public class Pair<A, B> {
         return fun.test(this);
     }
     
+    public boolean predLeft(final Predicate<A> pred) {
+        return pred.test(left);
+    }
+
+    public boolean predRight(final Predicate<B> pred) {
+        return pred.test(right);
+    }
+
     public boolean intoPred(final BiPredicate<A, B> fun) {
         return fun.test(left, right);
     }
@@ -195,6 +203,16 @@ public class Pair<A, B> {
         public static final <A, B> Predicate<Pair<A, B>> intoPred(
                 final BiPredicate<A, B> pred) {
             return pair -> pair.intoPred(pred);
+        }
+
+        public static final <A, B> Predicate<Pair<A, B>> predLeft(
+                final Predicate<A> pred) {
+            return pair -> pair.predLeft(pred);
+        }
+
+        public static final <A, B> Predicate<Pair<A, B>> predRight(
+                final Predicate<B> pred) {
+            return pair -> pair.predRight(pred);
         }
     }
 }
