@@ -79,10 +79,6 @@ public interface ImmutablePair<A, B> {
         return fun.test(right());
     }
 
-    default ImmutablePair<A, B> map(final UnaryOperator<ImmutablePair<A, B>> fun) {
-        return fun.apply(this);
-    }
-
     ImmutablePair<A, B> mapLeft(final UnaryOperator<A> fun);
 
     <R> ImmutablePair<R, B> mapLeft(final Function<A, R> fun);
