@@ -1,11 +1,16 @@
 package pair;
 
+import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 public class Pair<A, B> implements ImmutablePair<A, B> {
-    public <T> UniformPair<T> of(T thing) {
+    public static <T> UniformPair<T> of(T thing) {
         return new UniformPair<>(thing, thing);
+    }
+
+    public static <A, B> Pair<A, B> fromEntry(Entry<A, B> entry) {
+        return new Pair<>(entry.getKey(), entry.getValue());
     }
 
     public final A left;
