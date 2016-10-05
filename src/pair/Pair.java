@@ -16,6 +16,10 @@ public class Pair<A, B> implements ImmutablePair<A, B> {
         return new UniformPair<>(thing, thing);
     }
 
+    public static <A, B> Pair<A, B> make(A a, B b) {
+        return new Pair<>(a, b);
+    }
+
     public static <A, B> Pair<A, B> fromEntry(Entry<A, B> entry) {
         return new Pair<>(entry);
     }
