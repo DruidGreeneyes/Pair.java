@@ -12,10 +12,6 @@ import java.util.function.ToDoubleFunction;
 import java.util.function.UnaryOperator;
 
 public class Pair<A, B> implements ImmutablePair<A, B> {
-    public static <T> UniformPair<T> of(T thing) {
-        return new UniformPair<>(thing, thing);
-    }
-
     public static <A, B> Pair<A, B> make(A a, B b) {
         return new Pair<>(a, b);
     }

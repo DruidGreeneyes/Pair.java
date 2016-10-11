@@ -15,10 +15,6 @@ public class UniformPair<T> implements ImmutablePair<T, T> {
         return new UniformPair<>(thing, thing);
     }
 
-    public static <A, B> Pair<A, B> make(A a, B b) {
-        return new Pair<>(a, b);
-    }
-
     public final T left;
 
     public final T right;
