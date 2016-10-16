@@ -1,7 +1,6 @@
 package triple;
 
 import java.util.function.Function;
-import java.util.function.UnaryOperator;
 
 public class Triple<A, B, C> implements ImmutableTriple<A, B, C> {
 
@@ -41,27 +40,12 @@ public class Triple<A, B, C> implements ImmutableTriple<A, B, C> {
     }
 
     @Override
-    public Triple<A, B, C> mapLeft(final UnaryOperator<A> fun) {
-        return replaceLeft(fun.apply(left));
-    }
-
-    @Override
     public <R> Triple<A, R, C> mapCenter(final Function<B, R> fun) {
         return replaceCenter(fun.apply(center));
     }
 
     @Override
-    public Triple<A, B, C> mapCenter(final UnaryOperator<B> fun) {
-        return replaceCenter(fun.apply(center));
-    }
-
-    @Override
     public <R> Triple<A, B, R> mapRight(final Function<C, R> fun) {
-        return replaceRight(fun.apply(right));
-    }
-
-    @Override
-    public Triple<A, B, C> mapRight(final UnaryOperator<C> fun) {
         return replaceRight(fun.apply(right));
     }
 
@@ -89,28 +73,13 @@ public class Triple<A, B, C> implements ImmutableTriple<A, B, C> {
             return t -> t.mapLeft(fun);
         }
 
-        public static <A, B, C> UnaryOperator<Triple<A, B, C>> mapLeft(
-                final UnaryOperator<A> fun) {
-            return t -> t.mapLeft(fun);
-        }
-
         public static <A, B, C, R> Function<Triple<A, B, C>, Triple<A, R, C>> mapCenter(
                 final Function<B, R> fun) {
             return t -> t.mapCenter(fun);
         }
 
-        public static <A, B, C> UnaryOperator<Triple<A, B, C>> mapCenter(
-                UnaryOperator<B> fun) {
-            return t -> t.mapCenter(fun);
-        }
-
         public static <A, B, C, R> Function<Triple<A, B, C>, Triple<A, B, R>> mapRight(
                 final Function<C, R> fun) {
-            return t -> t.mapRight(fun);
-        }
-
-        public static <A, B, C> UnaryOperator<Triple<A, B, C>> mapRight(
-                final UnaryOperator<C> fun) {
             return t -> t.mapRight(fun);
         }
 
