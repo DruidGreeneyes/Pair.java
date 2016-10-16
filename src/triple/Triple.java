@@ -35,6 +35,28 @@ public class Triple<A, B, C> implements ImmutableTriple<A, B, C> {
     }
 
     @Override
+    public String toString() {
+        return String.format("%s::%s::%s",
+                             left.toString(),
+                             center.toString(),
+                             right.toString());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj.getClass()
+               .equals(Triple.class))
+            return equals((Triple<?, ?, ?>) obj);
+        else
+            return false;
+    }
+
+    public boolean equals(Triple<?, ?, ?> other) {
+        return other.left.equals(this.left) && other.center.equals(this.center)
+               && other.right.equals(this.right);
+    }
+
+    @Override
     public <R> Triple<R, B, C> mapLeft(final Function<A, R> fun) {
         return replaceLeft(fun.apply(left));
     }

@@ -22,4 +22,6 @@ public interface ImmutableTriple<A, B, C> {
     <R> ImmutableTriple<A, R, C> replaceCenter(R newCenter);
 
     <R> ImmutableTriple<A, B, R> replaceRight(R newRight);
+
+    boolean equals(Object obj);
 }
