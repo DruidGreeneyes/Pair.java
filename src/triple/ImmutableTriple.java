@@ -23,4 +23,10 @@ public interface ImmutableTriple<A, B, C> {
     <R> ImmutableTriple<A, B, R> mapRight(Function<C, R> fun);
 
     ImmutableTriple<A, B, C> mapRight(UnaryOperator<C> fun);
+
+    <R> ImmutableTriple<R, B, C> replaceLeft(R newLeft);
+
+    <R> ImmutableTriple<A, R, C> replaceCenter(R newCenter);
+
+    <R> ImmutableTriple<A, B, R> replaceRight(R newRight);
 }
