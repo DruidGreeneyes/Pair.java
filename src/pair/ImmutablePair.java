@@ -79,13 +79,9 @@ public interface ImmutablePair<A, B> {
         return fun.test(right());
     }
 
-    ImmutablePair<A, B> mapLeft(final UnaryOperator<A> fun);
-
     <R> ImmutablePair<R, B> mapLeft(final Function<A, R> fun);
 
     <R> ImmutablePair<R, B> replaceLeft(final R neoLiberal);
-
-    ImmutablePair<A, B> mapRight(final UnaryOperator<B> fun);
 
     <R> ImmutablePair<A, R> mapRight(final Function<B, R> fun);
 

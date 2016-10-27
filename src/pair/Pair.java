@@ -57,14 +57,6 @@ public class Pair<A, B> implements ImmutablePair<A, B> {
         return new Pair<>(left, fun.apply(right));
     }
 
-    public Pair<A, B> mapLeft(UnaryOperator<A> fun) {
-        return new Pair<>(fun.apply(left), right);
-    }
-
-    public Pair<A, B> mapRight(UnaryOperator<B> fun) {
-        return new Pair<>(left, fun.apply(right));
-    }
-
     public <R> Pair<R, B> replaceLeft(final R neoLiberal) {
         return new Pair<>(neoLiberal, right);
     }
@@ -111,11 +103,6 @@ public class Pair<A, B> implements ImmutablePair<A, B> {
         public static final <A, B, R> Function<Pair<A, B>, R> intoFun(
                 final BiFunction<A, B, R> fun) {
             return pair -> pair.intoFun(fun);
-        }
-
-        public static final <A, B> UnaryOperator<Pair<A, B>> map(
-                final UnaryOperator<Pair<A, B>> fun) {
-            return pair -> pair.map(fun);
         }
 
         public static final <A, B> ToDoubleFunction<Pair<A, B>> intoDouble(
