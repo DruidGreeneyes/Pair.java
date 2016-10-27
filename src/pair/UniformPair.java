@@ -151,4 +151,9 @@ public class UniformPair<T> implements ImmutablePair<T, T> {
             return pair -> pair.predRight(pred);
         }
     }
+
+    @Override
+    public UniformPair<T> copy() {
+        return intoFun(UniformPair::make);
+    }
 }

@@ -23,6 +23,8 @@ public interface ImmutablePair<A, B> {
 
     String toString();
 
+    ImmutablePair<A, B> copy();
+
     default <R> R intoFun(final BiFunction<A, B, R> fun) {
         return fun.apply(left(), right());
     }

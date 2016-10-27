@@ -135,4 +135,9 @@ public class Pair<A, B> implements ImmutablePair<A, B> {
             return pair -> pair.predRight(pred);
         }
     }
+
+    @Override
+    public Pair<A, B> copy() {
+        return intoFun(Pair::make);
+    }
 }
