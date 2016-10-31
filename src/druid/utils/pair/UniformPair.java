@@ -1,4 +1,4 @@
-package pair;
+package druid.utils.pair;
 
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;

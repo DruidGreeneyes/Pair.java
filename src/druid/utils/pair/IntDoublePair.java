@@ -1,4 +1,4 @@
-package pair;
+package druid.utils.pair;
 
 import java.util.Map.Entry;
 import java.util.function.DoubleFunction;

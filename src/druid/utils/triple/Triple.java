@@ -1,4 +1,4 @@
-package triple;
+package druid.utils.triple;
 
 import java.util.function.Function;
 
