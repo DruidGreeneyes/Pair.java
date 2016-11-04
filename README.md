@@ -1,5 +1,5 @@
 # Pair.java
-[![Build Status](https://travis-ci.org/DruidGreeneyes/Pair.java.svg?branch=master)](https://travis-ci.org/DruidGreeneyes/Pair.java)
+[![Build Status](https://travis-ci.org/DruidGreeneyes/Pair.java.svg?branch=master)](https://travis-ci.org/DruidGreeneyes/Pair.java) [![Release](https://jitpack.io/v/DruidGreeneyes/Pair.java.svg)](https://jitpack.io/#DruidGreeneyes/Pair.java)
 
 Because Map.Entry is !@#$ stupid.
 
