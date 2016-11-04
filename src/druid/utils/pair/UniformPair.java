@@ -11,11 +11,11 @@ import java.util.function.ToDoubleFunction;
 import java.util.function.UnaryOperator;
 
 public class UniformPair<T> implements ImmutablePair<T, T> {
-    public static <T> UniformPair<T> of(T thing) {
+    public static <T> UniformPair<T> of(final T thing) {
         return new UniformPair<>(thing, thing);
     }
 
-    public static <T> UniformPair<T> make(T a, T b) {
+    public static <T> UniformPair<T> make(final T a, final T b) {
         return new UniformPair<>(a, b);
     }
 
@@ -28,46 +28,55 @@ public class UniformPair<T> implements ImmutablePair<T, T> {
         right = b;
     }
 
+    @Override
     public final T left() {
         return left;
     }
 
+    @Override
     public final T right() {
         return right;
     }
 
+    @Override
     public final UniformPair<T> invert() {
         return new UniformPair<>(right, left);
     }
 
+    @Override
     public final String toString() {
         return String.format("%s :: %s", left.toString(), right.toString());
     }
 
-    public <R> Pair<R, T> mapLeft(final Function<T, R> fun) {
+    @Override
+    public <R, Fn extends Function<T, R>> Pair<R, T> mapLeft(final Fn fun) {
         return new Pair<>(fun.apply(left), right);
     }
 
-    public <R> Pair<T, R> mapRight(final Function<T, R> fun) {
+    @Override
+    public <R, Fn extends Function<T, R>> Pair<T, R> mapRight(final Fn fun) {
         return new Pair<>(left, fun.apply(right));
     }
 
-    public UniformPair<T> mapLeft(UnaryOperator<T> fun) {
+    public <Fn extends UnaryOperator<T>> UniformPair<T> mapLeft(final Fn fun) {
         return new UniformPair<>(fun.apply(left), right);
     }
 
-    public UniformPair<T> mapRight(UnaryOperator<T> fun) {
+    public <Fn extends UnaryOperator<T>> UniformPair<T> mapRight(final Fn fun) {
         return new UniformPair<>(left, fun.apply(right));
     }
 
-    public UniformPair<T> map(UnaryOperator<UniformPair<T>> fun) {
+    public <Fn extends UnaryOperator<UniformPair<T>>> UniformPair<T> map(
+            final Fn fun) {
         return fun.apply(this);
     }
 
+    @Override
     public <R> Pair<R, T> replaceLeft(final R neoLiberal) {
         return new Pair<>(neoLiberal, right);
     }
 
+    @Override
     public <R> Pair<T, R> replaceRight(final R altRight) {
         return new Pair<>(left, altRight);
     }
@@ -75,7 +84,7 @@ public class UniformPair<T> implements ImmutablePair<T, T> {
     /*
      * public UniformPair<T> replaceLeft(final T neoLiberal) { return new
      * UniformPair<>(neoLiberal, right); }
-     * 
+     *
      * public UniformPair<T> replaceRight(final T altRight) { return new
      * UniformPair<>(left, altRight); }
      */
@@ -91,13 +100,13 @@ public class UniformPair<T> implements ImmutablePair<T, T> {
             return right -> new UniformPair<>(left, right);
         }
 
-        public static final <T, R> Function<UniformPair<T>, Pair<R, T>> mapLeft(
-                final Function<T, R> fun) {
+        public static final <T, R, Fn extends Function<T, R>> Function<UniformPair<T>, Pair<R, T>> mapLeft(
+                final Fn fun) {
             return pair -> pair.mapLeft(fun);
         }
 
-        public static final <T, R> Function<UniformPair<T>, Pair<T, R>> mapRight(
-                final Function<T, R> fun) {
+        public static final <T, R, Fn extends Function<T, R>> Function<UniformPair<T>, Pair<T, R>> mapRight(
+                final Fn fun) {
             return pair -> pair.mapRight(fun);
         }
 
@@ -111,43 +120,43 @@ public class UniformPair<T> implements ImmutablePair<T, T> {
             return pair -> pair.replaceRight(altRight);
         }
 
-        public static final <T, R> Function<UniformPair<T>, R> intoFun(
-                final BiFunction<T, T, R> fun) {
+        public static final <T, R, Fn extends BiFunction<T, T, R>> Function<UniformPair<T>, R> intoFun(
+                final Fn fun) {
             return pair -> pair.intoFun(fun);
         }
 
-        public static final <T> UnaryOperator<UniformPair<T>> map(
-                final UnaryOperator<UniformPair<T>> fun) {
+        public static final <T, Fn extends UnaryOperator<UniformPair<T>>> UnaryOperator<UniformPair<T>> map(
+                final Fn fun) {
             return pair -> pair.map(fun);
         }
 
-        public static final <T> ToDoubleFunction<UniformPair<T>> intoDouble(
-                final ToDoubleFunction<ImmutablePair<T, T>> fun) {
+        public static final <T, Fn extends ToDoubleFunction<ImmutablePair<T, T>>> ToDoubleFunction<UniformPair<T>> intoDouble(
+                final Fn fun) {
             return pair -> pair.intoDouble(fun);
         }
 
-        public static final <T> ToDoubleFunction<UniformPair<T>> intoDouble(
-                final ToDoubleBiFunction<T, T> fun) {
+        public static final <T, Fn extends ToDoubleBiFunction<T, T>> ToDoubleFunction<UniformPair<T>> intoDouble(
+                final Fn fun) {
             return pair -> pair.intoDouble(fun);
         }
 
-        public static final <T> Consumer<UniformPair<T>> intoCon(
-                final BiConsumer<T, T> fun) {
+        public static final <T, Fn extends BiConsumer<T, T>> Consumer<UniformPair<T>> intoCon(
+                final Fn fun) {
             return pair -> pair.intoCon(fun);
         }
 
-        public static final <T> Predicate<UniformPair<T>> intoPred(
-                final BiPredicate<T, T> pred) {
+        public static final <T, Fn extends BiPredicate<T, T>> Predicate<UniformPair<T>> intoPred(
+                final Fn pred) {
             return pair -> pair.intoPred(pred);
         }
 
-        public static final <T> Predicate<UniformPair<T>> predLeft(
-                final Predicate<T> pred) {
+        public static final <T, Fn extends Predicate<T>> Predicate<UniformPair<T>> predLeft(
+                final Fn pred) {
             return pair -> pair.predLeft(pred);
         }
 
-        public static final <T> Predicate<UniformPair<T>> predRight(
-                final Predicate<T> pred) {
+        public static final <T, Fn extends Predicate<T>> Predicate<UniformPair<T>> predRight(
+                final Fn pred) {
             return pair -> pair.predRight(pred);
         }
     }
