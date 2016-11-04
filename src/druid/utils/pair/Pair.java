@@ -28,6 +28,8 @@ public class Pair<A, B> implements ImmutablePair<A, B> {
         left = a;
         right = b;
     }
+    
+    
 
     public Pair(final Entry<A, B> entry) {
         this(entry.getKey(), entry.getValue());
