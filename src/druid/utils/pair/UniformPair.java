@@ -66,8 +66,7 @@ public class UniformPair<T> implements ImmutablePair<T, T> {
         return new UniformPair<>(left, fun.apply(right));
     }
 
-    public UniformPair<T> map(
-            final UnaryOperator<UniformPair<T>> fun) {
+    public UniformPair<T> map(final UnaryOperator<UniformPair<T>> fun) {
         return fun.apply(this);
     }
 
@@ -105,8 +104,18 @@ public class UniformPair<T> implements ImmutablePair<T, T> {
             return pair -> pair.mapLeft(fun);
         }
 
+        public static final <T> UnaryOperator<UniformPair<T>> mapLeft(
+                final UnaryOperator<T> fun) {
+            return pair -> pair.mapLeft(fun);
+        }
+
         public static final <T, R> Function<UniformPair<T>, Pair<T, R>> mapRight(
                 final Function<T, R> fun) {
+            return pair -> pair.mapRight(fun);
+        }
+
+        public static final <T> UnaryOperator<UniformPair<T>> mapRight(
+                final UnaryOperator<T> fun) {
             return pair -> pair.mapRight(fun);
         }
 
