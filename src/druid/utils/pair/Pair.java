@@ -34,6 +34,20 @@ public class Pair<A, B> implements ImmutablePair<A, B> {
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (obj.getClass()
+               .equals(Pair.class))
+            return equals((Pair) obj);
+        else
+            return false;
+    }
+
+    private final boolean equals(final Pair pair) {
+        return (left == pair.left || left.equals(pair.left))
+               && (right == pair.right || right.equals(pair.right));
+    }
+
+    @Override
     public final A left() {
         return left;
     }

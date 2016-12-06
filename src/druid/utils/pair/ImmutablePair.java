@@ -83,18 +83,15 @@ public interface ImmutablePair<A, B> {
         fun.accept(left(), right());
     }
 
-    default void intoCon(
-            final Consumer<ImmutablePair<A, B>> fun) {
+    default void intoCon(final Consumer<ImmutablePair<A, B>> fun) {
         fun.accept(this);
     }
 
-    default double intoDouble(
-            final ToDoubleFunction<ImmutablePair<A, B>> fun) {
+    default double intoDouble(final ToDoubleFunction<ImmutablePair<A, B>> fun) {
         return fun.applyAsDouble(this);
     }
 
-    default double intoDouble(
-            final ToDoubleBiFunction<A, B> fun) {
+    default double intoDouble(final ToDoubleBiFunction<A, B> fun) {
         return fun.applyAsDouble(left(), right());
     }
 
@@ -102,13 +99,11 @@ public interface ImmutablePair<A, B> {
         return fun.apply(left(), right());
     }
 
-    default <R> R intoFun(
-            final Function<ImmutablePair<A, B>, R> fun) {
+    default <R> R intoFun(final Function<ImmutablePair<A, B>, R> fun) {
         return fun.apply(this);
     }
 
-    default int intoInt(
-            final ToIntFunction<ImmutablePair<A, B>> fun) {
+    default int intoInt(final ToIntFunction<ImmutablePair<A, B>> fun) {
         return fun.applyAsInt(this);
     }
 
@@ -116,8 +111,7 @@ public interface ImmutablePair<A, B> {
         return fun.applyAsInt(left(), right());
     }
 
-    default long intoLong(
-            final ToLongFunction<ImmutablePair<A, B>> fun) {
+    default long intoLong(final ToLongFunction<ImmutablePair<A, B>> fun) {
         return fun.applyAsLong(this);
     }
 
@@ -125,8 +119,7 @@ public interface ImmutablePair<A, B> {
         return fun.applyAsLong(left(), right());
     }
 
-    default boolean intoPred(
-            final Predicate<ImmutablePair<A, B>> fun) {
+    default boolean intoPred(final Predicate<ImmutablePair<A, B>> fun) {
         return fun.test(this);
     }
 
